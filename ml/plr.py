@@ -16,7 +16,17 @@ pd.DataFrame(cars,columns=["price","speed"])\
 
 
 #reading csv file
-df = pd.read_csv("mlr_dataset.csv",sep=",")
+df = pd.read_csv("plr_dataset.csv",sep=",")
+
+x = df["price"].values.reshape(-1,1)
+y = df["speed"].values.reshape(-1,1)
+
+lr = LinearRegression()
+
+# bu dataset ine linear regresyon un neden uygun olmadığını gösterir.
+lr.fit(x,y)
+plt.scatter(x,y,color="red")
+plt.plot(x,lr.predict(x))
 
 
 
