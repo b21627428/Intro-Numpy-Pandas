@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 plt.style.use("seaborn-whitegrid")
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-import numpy as np
 
 #creating csv file
 cars = {
@@ -27,6 +26,17 @@ lr = LinearRegression()
 lr.fit(x,y)
 plt.scatter(x,y,color="red")
 plt.plot(x,lr.predict(x))
+
+#Polynomial Linear Regression
+from sklearn.preprocessing import PolynomialFeatures
+polynomial_reg = PolynomialFeatures(degree = 5)
+
+x_polynomial = polynomial_reg.fit_transform(x)
+lr.fit(x_polynomial,y)
+
+#visualization
+plt.scatter(x,y,color="red")
+plt.plot(x,lr.predict(x_polynomial))
 
 
 
